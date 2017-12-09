@@ -6,6 +6,8 @@
 package pratice;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,11 +21,14 @@ public class Payment {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter Payment Amount :");
         payment = input.nextDouble();
-        
-        if(payment < 0){
-            System.out.println("Negative Payment : "+payment);
-        } else {
-            System.out.println("Positive Payment : "+payment);
+
+        try {
+            if (payment < 0) {
+              ///  System.out.println("Negative Payment : " + payment);
+                throw new Exception();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
         }
 
     }
