@@ -6,8 +6,7 @@
 package pratice;
 
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -25,10 +24,10 @@ public class Payment {
         try {
             if (payment < 0) {
               ///  System.out.println("Negative Payment : " + payment);
-                throw new Exception();
+                throw new NegativePaymentException(payment);
             }
-        } catch (Exception ex) {
-            System.out.println(ex.toString());
+        } catch (NegativePaymentException ex) {
+            System.out.println(ex.toString()    );
         }
 
     }
