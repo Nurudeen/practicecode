@@ -7,7 +7,6 @@ package pratice;
 
 import java.util.Scanner;
 
-
 /**
  *
  * @author Yusuf Nurudeen
@@ -15,20 +14,28 @@ import java.util.Scanner;
 public class Payment {
 
     double payment = 0;
+    boolean isNegative = true;
 
     public void pay() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter Payment Amount :");
-        payment = input.nextDouble();
+        do {
+            try {
 
-        try {
-            if (payment < 0) {
-              ///  System.out.println("Negative Payment : " + payment);
-                throw new NegativePaymentException(payment);
+                System.out.print("Enter Payment Amount :");
+                payment = input.nextDouble();
+                if (payment < 0) {
+                    throw new NegativePaymentException(payment);
+                } else {
+                    isNegative = false;
+                }
+            } catch (NegativePaymentException ex) {
+                System.out.println(ex.toString());
+                 System.out.println("Please try again");
             }
-        } catch (NegativePaymentException ex) {
-            System.out.println(ex.toString()    );
-        }
+
+        } while (isNegative);
+        
+        System.out.println("Thanks for making payment "+payment);
 
     }
 
